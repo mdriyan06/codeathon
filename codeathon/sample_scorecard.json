@@ -1,0 +1,191 @@
+{
+  "user": "john.doe@example.com",
+  "resume": {
+    "fileName": "john_doe_resume.pdf",
+    "content": "Professional Software Engineer with 3 years of experience in full-stack development... Python Django Developer at Tech Corp. Built REST APIs with Python. JavaScript React Developer. DSA and Algorithm training.",
+    "skills": ["python", "javascript", "sql", "aws"],
+    "languages": ["python", "javascript"],
+    "validation": [
+      "✓ Found skill: python",
+      "✓ Found skill: javascript",
+      "✓ Found skill: sql",
+      "✓ Resume has substantial content",
+      "✓ Standard resume format detected",
+      "✓ Interview will be customized for: python, javascript, sql, aws"
+    ]
+  },
+  "scores": {
+    "overallScore": "3.85",
+    "recommendation": "Hire",
+    "dimensionAverages": {
+      "Clarity": "3.9",
+      "Technical Accuracy": "3.8",
+      "Completeness": "3.7",
+      "Confidence": "3.9"
+    },
+    "roundAverages": {
+      "aptitude": "3.6",
+      "coding": "4.0",
+      "dsa": "3.8",
+      "hr": "3.8"
+    },
+    "strengths": [
+      "Technical Accuracy (3.8/5)",
+      "Confidence (3.9/5)",
+      "Clarity (3.9/5)"
+    ],
+    "improvements": [
+      "Completeness (3.7/5)",
+      "Technical Accuracy (3.8/5)",
+      "Confidence (3.9/5)"
+    ],
+    "perQuestion": [
+      {
+        "questionId": "apt1",
+        "round": "aptitude",
+        "question": "What is 15% of 200?",
+        "answer": "0",
+        "type": "mcq",
+        "difficulty": "easy",
+        "dimensions": {
+          "Clarity": 5,
+          "Technical Accuracy": 5,
+          "Completeness": 5,
+          "Confidence": 5
+        },
+        "overall": 5
+      },
+      {
+        "questionId": "cod1",
+        "round": "coding",
+        "question": "Write a function that returns the sum of two numbers.",
+        "answer": "def add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # Output: 8",
+        "type": "code",
+        "difficulty": "easy",
+        "dimensions": {
+          "Clarity": 4,
+          "Technical Accuracy": 4,
+          "Completeness": 3,
+          "Confidence": 4
+        },
+        "overall": 4
+      },
+      {
+        "questionId": "dsa1",
+        "round": "dsa",
+        "question": "Explain binary search and write its implementation.",
+        "answer": "Binary search is an efficient algorithm that finds a target value in a sorted array. It works by dividing the array in half and discarding the half that cannot contain the target. Time complexity is O(log n), which is much better than linear search O(n).\n\nThe algorithm uses two pointers - left and right. We calculate mid and compare with target. If target equals mid, we found it. If target is less than mid, we move right pointer. Otherwise, we move left pointer.",
+        "type": "code",
+        "difficulty": "easy",
+        "dimensions": {
+          "Clarity": 4,
+          "Technical Accuracy": 4,
+          "Completeness": 3,
+          "Confidence": 4
+        },
+        "overall": 4
+      },
+      {
+        "questionId": "hr1",
+        "round": "hr",
+        "question": "Tell me about yourself in 2-3 minutes.",
+        "answer": "Hello, I'm John Doe, a full-stack software engineer with 3 years of professional experience. I started my career at Tech Corp where I specialized in Python backend development and built REST APIs that served thousands of users. I'm proficient in Python, JavaScript, and SQL. I also have experience with AWS cloud deployment and Docker containerization. Beyond technical skills, I'm passionate about writing clean, maintainable code and working in collaborative teams. I'm looking to grow further and contribute to challenging projects that solve real-world problems.",
+        "type": "text",
+        "difficulty": "easy",
+        "dimensions": {
+          "Clarity": 4,
+          "Technical Accuracy": 3,
+          "Completeness": 4,
+          "Confidence": 4
+        },
+        "overall": 4
+      }
+    ],
+    "questionsAnswered": 18,
+    "totalTime": 45
+  },
+  "answers": [
+    {
+      "questionId": "apt1",
+      "round": "aptitude",
+      "question": "What is 15% of 200?",
+      "answer": "0",
+      "type": "mcq",
+      "difficulty": "easy",
+      "timestamp": "2026-02-07T10:15:00.000Z"
+    },
+    {
+      "questionId": "apt2",
+      "round": "aptitude",
+      "question": "A train travels 300km in 5 hours. What is its average speed?",
+      "answer": "1",
+      "type": "mcq",
+      "difficulty": "easy",
+      "timestamp": "2026-02-07T10:16:00.000Z"
+    },
+    {
+      "questionId": "apt3",
+      "round": "aptitude",
+      "question": "If x + y = 10 and x - y = 2, what is x?",
+      "answer": "1",
+      "type": "mcq",
+      "difficulty": "medium",
+      "timestamp": "2026-02-07T10:17:00.000Z"
+    },
+    {
+      "questionId": "apt4",
+      "round": "aptitude",
+      "question": "What percentage is 25 out of 200?",
+      "answer": "1",
+      "type": "mcq",
+      "difficulty": "medium",
+      "timestamp": "2026-02-07T10:18:00.000Z"
+    },
+    {
+      "questionId": "apt5",
+      "round": "aptitude",
+      "question": "A compound interest problem: If 1000 becomes 1210 in 2 years at compound interest, what is the rate per annum?",
+      "answer": "2",
+      "type": "mcq",
+      "difficulty": "hard",
+      "timestamp": "2026-02-07T10:19:00.000Z"
+    },
+    {
+      "questionId": "cod1",
+      "round": "coding",
+      "question": "Write a Python function that returns the sum of two numbers.",
+      "answer": "def add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # Output: 8",
+      "type": "code",
+      "difficulty": "easy",
+      "timestamp": "2026-02-07T10:20:00.000Z"
+    },
+    {
+      "questionId": "cod2",
+      "round": "coding",
+      "question": "Write a function to reverse a string in Python.",
+      "answer": "def reverse_string(s):\n    return s[::-1]\n\nresult = reverse_string('hello')\nprint(result)  # Output: olleh",
+      "type": "code",
+      "difficulty": "easy",
+      "timestamp": "2026-02-07T10:21:00.000Z"
+    },
+    {
+      "questionId": "dsa1",
+      "round": "dsa",
+      "question": "Explain binary search and write its implementation.",
+      "answer": "Binary search is an efficient algorithm for finding a target value in a sorted array. It uses the divide and conquer approach. Time complexity: O(log n)",
+      "type": "code",
+      "difficulty": "easy",
+      "timestamp": "2026-02-07T10:22:00.000Z"
+    },
+    {
+      "questionId": "hr1",
+      "round": "hr",
+      "question": "Tell me about yourself in 2-3 minutes.",
+      "answer": "I'm a full-stack developer with 3 years of experience specializing in Python and JavaScript. I've worked on scalable REST APIs, cloud deployment, and team collaboration.",
+      "type": "text",
+      "difficulty": "easy",
+      "timestamp": "2026-02-07T10:23:00.000Z"
+    }
+  ],
+  "exportedAt": "2026-02-07T10:30:00.000Z"
+}

@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Interview Intelligence Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-gray-800 min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            🚀 InterviewAI
+          </div>
+        </div>
+        <div id="navLinks" class="flex gap-4 items-center">
+          <span id="userEmail" class="text-sm text-gray-600 hidden"></span>
+          <button id="logoutBtn" class="px-4 py-2 bg-red-500 text-white rounded hidden hover:bg-red-600">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="max-w-6xl mx-auto px-6 py-8">
+
+      <!-- LOGIN PAGE -->
+      <div id="loginPage" class="page">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-screen">
+          <div>
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              AI-Powered Interview Platform
+            </h1>
+            <p class="text-lg text-gray-600 mb-6">
+              Experience intelligent interviews with instant feedback, structured scorecards, and AI-driven candidate assessment.
+            </p>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex gap-2"><span class="text-blue-600 font-bold">✓</span> Automated skill assessment</li>
+              <li class="flex gap-2"><span class="text-blue-600 font-bold">✓</span> Multi-round interviews</li>
+              <li class="flex gap-2"><span class="text-blue-600 font-bold">✓</span> Intelligent scoring</li>
+              <li class="flex gap-2"><span class="text-blue-600 font-bold">✓</span> Instant PDF reports</li>
+              <li class="flex gap-2"><span class="text-blue-600 font-bold">✓</span> Mock interview practice</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-2xl shadow-xl p-8">
+            <h2 class="text-2xl font-semibold mb-6">Sign in</h2>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">Email Address</label>
+                <input id="loginEmail" type="email" placeholder="your@email.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              </div>
+              <button id="sendOtpBtn" class="w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 font-semibold">
+                Send OTP to Email
+              </button>
+            </div>
+
+            <div id="otpSection" class="mt-6 hidden">
+              <p class="text-sm text-gray-600 mb-3">Enter the 4-digit OTP sent to your email</p>
+              <div class="flex gap-2 mb-4">
+                <input id="otp1" type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg text-lg font-bold focus:ring-2 focus:ring-blue-500" />
+                <input id="otp2" type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg text-lg font-bold focus:ring-2 focus:ring-blue-500" />
+                <input id="otp3" type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg text-lg font-bold focus:ring-2 focus:ring-blue-500" />
+                <input id="otp4" type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded-lg text-lg font-bold focus:ring-2 focus:ring-blue-500" />
+              </div>
+              <button id="verifyOtpBtn" class="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-semibold">Verify OTP</button>
+              <p id="otpTimer" class="text-xs text-gray-600 mt-2 text-center">Resend in <span id="timer">30</span>s</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUME PAGE -->
+      <div id="resumePage" class="page hidden">
+        <div class="bg-white rounded-2xl shadow-lg p-8 max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold mb-2">Upload Your Resume</h2>
+          <p class="text-gray-600 mb-6">We'll analyze your resume to customize your interview experience</p>
+
+          <!-- File Format Instructions -->
+          <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+            <h3 class="font-semibold text-yellow-900 mb-2">📋 Supported Format</h3>
+            <p class="text-sm text-yellow-800 mb-3">Only <strong>plain text files (.txt)</strong> are supported</p>
+            <details class="text-sm text-yellow-800">
+              <summary class="cursor-pointer font-medium mb-2">How to convert your resume to .txt format:</summary>
+              <ol class="list-decimal ml-5 mt-2 space-y-1">
+                <li>Open your resume in Microsoft Word, Google Docs, or any text editor</li>
+                <li>Click <strong>File → Save As</strong></li>
+                <li>Select file type: <strong>"Plain Text (.txt)"</strong> or <strong>"Text Only"</strong></li>
+                <li>Save the file (e.g., "MyResume.txt")</li>
+                <li>Upload the .txt file below</li>
+              </ol>
+              <p class="mt-2 font-medium">Need a sample? <a href="sample_resume.txt" download class="text-blue-600 underline hover:text-blue-800">Download sample resume</a></p>
+            </details>
+          </div>
+
+          <div id="resumeUpload" class="border-3 border-dashed border-blue-400 rounded-xl p-8 text-center cursor-pointer hover:bg-blue-50 mb-4 transition bg-blue-50">
+            <input id="resumeFile" type="file" accept=".txt" hidden />
+            <div class="text-5xl mb-3">📄</div>
+            <p class="font-bold text-gray-800 text-lg">Click to upload your resume</p>
+            <p class="text-sm text-gray-600 mt-1">or drag and drop your .txt file</p>
+            <p class="text-xs text-gray-500 mt-3">Supported: Plain Text (.txt) files only</p>
+          </div>
+
+          <div id="resumePreview" class="hidden mb-4 p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-semibold text-green-700 mb-2">✓ Resume Content Loaded:</h3>
+            <div id="resumeText" class="text-sm text-gray-700 max-h-48 overflow-y-auto bg-white p-3 rounded border border-gray-300 font-mono text-xs leading-relaxed"></div>
+          </div>
+
+          <div id="validationResults" class="hidden mb-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 class="font-semibold mb-3 text-blue-900">🔍 Resume Analysis</h3>
+            <div id="validationList" class="space-y-2 text-sm text-gray-800"></div>
+          </div>
+
+          <!-- Success Message (shown after resume is verified) -->
+          <div id="resumeVerifiedMessage" class="hidden mb-4 p-4 bg-green-50 border border-green-300 rounded-lg">
+            <h3 class="font-semibold text-green-800 mb-2">✓ Resume Verified Successfully</h3>
+            <p class="text-sm text-green-700">Your resume has been analyzed and skills have been extracted. You're ready to proceed with the interview.</p>
+          </div>
+
+          <div class="flex gap-3">
+            <button id="proceedBtn" class="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 font-semibold hidden">
+              ✓ Proceed to Interview
+            </button>
+            <button id="retryResumeBtn" class="flex-1 px-4 py-3 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 font-semibold hidden">
+              Upload Different Resume
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERVIEW ROUNDS PAGE -->
+      <div id="interviewPage" class="page hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold mb-2">Interview Assessment</h2>
+          <p class="text-gray-600">Complete all rounds to receive your scorecard</p>
+          <div class="mt-4 flex gap-2 flex-wrap">
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Aptitude</span>
+            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Coding</span>
+            <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-medium">DSA</span>
+            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">HR</span>
+          </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="mb-6 bg-white rounded-lg shadow p-4">
+          <div class="flex justify-between text-sm font-medium mb-2">
+            <span id="roundLabel">Round: Aptitude</span>
+            <span id="questionCounter">Q1 / 5</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+            <div id="progressBar" class="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Question Display -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-6">
+          <div class="mb-6">
+            <div class="text-sm text-gray-600 mb-2" id="questionMeta">Topic • Difficulty</div>
+            <h3 id="questionText" class="text-2xl font-semibold text-gray-800"></h3>
+          </div>
+
+          <!-- Code Editor for Coding/DSA -->
+          <div id="codeEditorSection" class="hidden mb-6 bg-gray-900 rounded-lg overflow-hidden">
+            <div class="bg-gray-800 px-4 py-2 flex justify-between items-center">
+              <span class="text-sm text-gray-300">Code Editor</span>
+              <select id="languageSelect" class="bg-gray-700 text-white text-sm px-2 py-1 rounded">
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+              </select>
+            </div>
+            <textarea id="codeInput" rows="10" class="w-full px-4 py-3 bg-gray-900 text-green-400 font-mono text-sm focus:outline-none" placeholder="// Write your code here..."></textarea>
+          </div>
+
+          <!-- Text Answer for Aptitude/HR -->
+          <div id="textAnswerSection" class="mb-6">
+            <textarea id="answerInput" rows="8" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer here..."></textarea>
+          </div>
+
+          <!-- MCQ Section -->
+          <div id="mcqSection" class="hidden mb-6 space-y-3"></div>
+
+          <!-- Controls -->
+          <div class="flex gap-3">
+            <button id="submitAnswerBtn" class="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 font-semibold">
+              Submit Answer
+            </button>
+            <button id="skipQuestionBtn" class="px-4 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold">
+              Skip
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-gray-700">
+          <strong>💡 Tip:</strong> Be clear and concise. Your answers are scored on clarity, technical accuracy, completeness, and confidence.
+        </div>
+      </div>
+
+      <!-- SCORECARD PAGE -->
+      <div id="scorecardPage" class="page hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold mb-2">Your Interview Scorecard</h2>
+          <p class="text-gray-600">Detailed analysis of your performance</p>
+        </div>
+
+        <!-- Overall Score Card -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-6 shadow-lg">
+            <p class="text-sm opacity-90">Overall Score</p>
+            <p id="overallScore" class="text-4xl font-bold">4.2</p>
+            <p class="text-xs opacity-75 mt-1">/ 5.0</p>
+          </div>
+          <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-xl p-6 shadow-lg">
+            <p class="text-sm opacity-90">Recommendation</p>
+            <p id="recommendationText" class="text-2xl font-bold">Hire</p>
+          </div>
+          <div class="bg-gradient-to-br from-pink-500 to-pink-600 text-white rounded-xl p-6 shadow-lg">
+            <p class="text-sm opacity-90">Questions Answered</p>
+            <p id="questionsAnswered" class="text-4xl font-bold">20</p>
+          </div>
+          <div class="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-xl p-6 shadow-lg">
+            <p class="text-sm opacity-90">Time Taken</p>
+            <p id="timeTaken" class="text-2xl font-bold">45m</p>
+          </div>
+        </div>
+
+        <!-- Dimension Scores -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h3 class="text-xl font-semibold mb-4">Performance by Dimension</h3>
+          <div id="dimensionScores" class="space-y-4"></div>
+        </div>
+
+        <!-- Per-Round Scores -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h3 class="text-xl font-semibold mb-4">Round-wise Breakdown</h3>
+          <div id="roundScores" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </div>
+
+        <!-- Strengths & Improvements -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div class="bg-green-50 border border-green-200 rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-green-800 mb-3">💪 Your Strengths</h3>
+            <ul id="strengthsList" class="space-y-2 text-sm text-gray-700"></ul>
+          </div>
+          <div class="bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-orange-800 mb-3">📈 Areas for Improvement</h3>
+            <ul id="improvementsList" class="space-y-2 text-sm text-gray-700"></ul>
+          </div>
+        </div>
+
+        <!-- Detailed Answers -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h3 class="text-xl font-semibold mb-4">Your Answers Review</h3>
+          <div id="answersReview" class="space-y-4"></div>
+        </div>
+
+        <!-- Export Options -->
+        <div class="flex gap-3">
+          <button id="downloadPdfBtn" class="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 font-semibold">
+            📥 Download PDF Report
+          </button>
+          <button id="downloadJsonBtn" class="flex-1 px-4 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold">
+            📊 Export JSON
+          </button>
+          <button id="retakeMockBtn" class="flex-1 px-4 py-3 bg-purple-200 text-purple-700 rounded-lg hover:bg-purple-300 font-semibold">
+            🔄 Try Mock Interview
+          </button>
+        </div>
+      </div>
+
+      <!-- MOCK INTERVIEW PAGE -->
+      <div id="mockInterviewPage" class="page hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold mb-2">Mock Interview Practice</h2>
+          <p class="text-gray-600">Practice mode - no scoring pressure, receive instant feedback</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-6">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="text-4xl">🎯</div>
+            <div>
+              <h3 class="text-xl font-semibold">Select Mock Interview Type</h3>
+              <p class="text-gray-600 text-sm">Choose which type of practice interview you'd like</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button class="mock-type-btn px-6 py-4 border-2 border-blue-300 rounded-lg hover:bg-blue-50 text-left transition" data-type="quick">
+              <div class="font-semibold text-blue-600 mb-1">⚡ Quick Round</div>
+              <p class="text-sm text-gray-600">5 random questions - 10 min</p>
+            </button>
+            <button class="mock-type-btn px-6 py-4 border-2 border-purple-300 rounded-lg hover:bg-purple-50 text-left transition" data-type="focused">
+              <div class="font-semibold text-purple-600 mb-1">🎯 Focused Round</div>
+              <p class="text-sm text-gray-600">Topic-specific questions</p>
+            </button>
+            <button class="mock-type-btn px-6 py-4 border-2 border-pink-300 rounded-lg hover:bg-pink-50 text-left transition" data-type="full">
+              <div class="font-semibold text-pink-600 mb-1">📋 Full Interview</div>
+              <p class="text-sm text-gray-600">Complete 20-question session</p>
+            </button>
+            <button class="mock-type-btn px-6 py-4 border-2 border-green-300 rounded-lg hover:bg-green-50 text-left transition" data-type="behavioral">
+              <div class="font-semibold text-green-600 mb-1">👥 Behavioral Round</div>
+              <p class="text-sm text-gray-600">HR & soft skills only</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mock Interview Implementation (same as regular interview) -->
+        <div id="mockQuestionSection" class="hidden">
+          <div class="mb-6 bg-white rounded-lg shadow p-4">
+            <div class="flex justify-between text-sm font-medium mb-2">
+              <span id="mockRoundLabel">Practice: Quick Round</span>
+              <span id="mockQuestionCounter">Q1 / 5</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div id="mockProgressBar" class="bg-gradient-to-r from-purple-600 to-pink-600 h-2 rounded-full transition-all" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-6">
+            <h3 id="mockQuestionText" class="text-2xl font-semibold text-gray-800 mb-6"></h3>
+            <textarea id="mockAnswerInput" rows="8" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4" placeholder="Type your answer here..."></textarea>
+            <div class="flex gap-3">
+              <button id="mockSubmitBtn" class="flex-1 px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:opacity-90 font-semibold">
+                Submit & Next
+              </button>
+              <button id="mockSkipBtn" class="px-4 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold">
+                Skip
+              </button>
+            </div>
+            <div id="mockFeedback" class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg hidden">
+              <p class="text-sm text-blue-800" id="mockFeedbackText"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hidden div for PDF generation -->
+    <div id="pdfContent" class="hidden"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
